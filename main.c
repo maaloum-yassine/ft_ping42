@@ -2,6 +2,6 @@
 
 int main (int ac, char **av)
 {
-    printf ("HII.\n");
+    printf ("HII FOR ALL.\n");
     return (0);
 }
