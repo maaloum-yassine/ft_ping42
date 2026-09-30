@@ -1,7 +1,8 @@
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror 
 NAME			= ft_ping
-SRC			=	main.c \
+SRC			=	src/main.c 
+# Parse/main.c 
 				
 
 
@@ -10,26 +11,27 @@ RESET		= 	\033[1;97m
 GREEN 		= 	\033[1;32m
 RED			= 	\033[1;31m
 
-OBJ		=	$(SRC:.c=.o)
-OBJ		:=	$(addprefix obj/, $(OBJ))
-OBJ_DIR		=	obj/
 
-all: $(OBJ_DIR) $(NAME)
 
-$(OBJ_DIR):
+OBJ			= $(patsubst src/%.c,obj/%.o,$(SRC))
+OBJ_DIR 	= obj/
+OBJ_SUBDIRS =  $(OBJ_DIR)Parse
+
+all: $(OBJ_SUBDIRS) $(NAME)
+
+$(OBJ_SUBDIRS):
 	@echo "$(GREEN)$(OBJ_DIR) : Created ! [^_^]$(RESET)"
-	mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_SUBDIRS)
 
 $(NAME): $(OBJ)
 		@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 		@echo "$(GREEN)$(NAME) : Created ! [^_^]$(RESET)"
 
-# obj/%.o: %.cpp PmergeMe.hpp
-obj/%.o: %.c
+obj/%.o: src/%.c
 		$(CC) $(CFLAGS) -c  $< -o $@
 
 clean:
-		@rm -rf obj
+		@rm -rf $(OBJ_DIR)
 		@echo "$(RED)$(NAME) : file obj deleted ! [^_^]$(RESET)"
 
 fclean: clean
