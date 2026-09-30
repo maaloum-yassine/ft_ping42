@@ -3,8 +3,10 @@
 #define _PARSE_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
-int ft_check_arguments (int argc, char **argv);
+
+unsigned char ft_check_arguments (int argc, char **argv);
 
 
 #endif
