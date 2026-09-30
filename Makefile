@@ -1,8 +1,10 @@
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror 
-NAME			= ft_ping
-SRC			=	src/main.c 
-# Parse/main.c 
+CFLAGS		=	
+# CFLAGS		=	-Wall -Wextra -Werror 
+NAME		= 	ft_ping
+SRC			=	src/main.c \
+				src/Parse/argument_validator.c
+
 				
 
 
