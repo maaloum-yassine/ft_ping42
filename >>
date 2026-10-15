@@ -1,0 +1,112 @@
+Pour réussir ton projet ft_ping, tu dois apprendre les notions ci-dessous avant de commencer à coder. Voici l'ordre que je te conseille.
+Plan d'apprentissage de ft_ping
+1. Les bases du C
+Tu dois maîtriser :
+- Les pointeurs et les chaînes de caractères.
+- argc et argv pour lire les arguments.
+- Les structures (struct).
+- Les fonctions et les fichiers .h.
+- La gestion des erreurs : perror(), strerror(), stderr.
+- Les codes de retour (return, EXIT_SUCCESS, EXIT_FAILURE).
+- L'allocation mémoire (malloc, free).
+2. Les arguments du programme
+Apprends à :
+- Parcourir les arguments avec argc et argv.
+- Reconnaître les options -v et -?.
+- Distinguer une option de l'adresse de destination.
+- Vérifier les arguments manquants ou invalides.
+- Afficher un message d'erreur adapté.
+
+
+3. Les bases des réseaux
+
+IPv4 et adresses IP
+Comprendre les adresses comme 8.8.8.8, le rôle d'une adresse IP et la différence entre IPv4 et IPv6.
+
+ICMP et ping
+Comprendre Echo Request, Echo Reply, TTL, les pertes de paquets et le temps de réponse (RTT).
+
+Les couches réseau
+Comprendre IP, ICMP, les paquets, les en-têtes et l'encapsulation.
+
+4. Les sockets en C
+
+C'est une partie essentielle du projet.
+Apprends ces fonctions et notions dans cet ordre :
+Fonction / notion	Rôle
+socket()	Créer un point de communication réseau
+struct sockaddr_in	Représenter une adresse IPv4
+inet_pton()	Convertir une IPv4 textuelle en format binaire
+getaddrinfo()	Résoudre un nom d'hôte en adresse IP
+sendto()	Envoyer un paquet
+recvfrom()	Recevoir un paquet
+setsockopt()	Configurer le socket
+close()	Fermer le socket
+Comprends aussi AF_INET, SOCK_DGRAM, SOCK_RAW, IPPROTO_ICMP et les erreurs possibles.
+Important : sur Linux, un socket ICMP de type SOCK_DGRAM peut fonctionner sans les mêmes privilèges qu'un socket SOCK_RAW. Vérifie le comportement attendu dans l'environnement d'évaluation.
+
+5. Construire les paquets ICMP
+Avant de coder l'envoi des paquets, apprends :
+- La structure d'un message ICMP.
+- Les champs type, code, checksum, identifier et sequence number.
+- La différence entre une requête Echo et une réponse Echo.
+- Le calcul du checksum ICMP.
+- La différence entre l'en-tête IP et le message ICMP.
+
+6. DNS et noms d'hôtes
+Ton programme doit accepter une IPv4 ou un nom d'hôte, par exemple google.com.
+Tu dois comprendre :
+- Ce qu'est le DNS.
+- La résolution avec getaddrinfo().
+- La différence entre résolution directe et résolution inverse.
+- Comment conserver le nom fourni par l'utilisateur pour l'affichage, sans dépendre d'une résolution DNS inverse lors du traitement des réponses.
+
+7. Mesure du temps et gestion des erreurs
+Apprends :
+- clock_gettime() pour mesurer le RTT.
+- Les délais d'attente et les timeouts.
+- La réception des réponses et la détection des paquets perdus.
+- La gestion de EINTR et des interruptions avec Ctrl+C.
+- Le signal SIGINT et la fonction sigaction().
+- L'affichage des statistiques finales : paquets envoyés, reçus, pertes et temps de réponse.
+
+8. Comprendre le comportement de ping
+Utilise le programme système ping comme référence pour observer :
+- Le format de la sortie.
+- Les numéros de séquence.
+- Le TTL et le RTT.
+- Les erreurs et les statistiques.
+- Le comportement des options -v et -?.
+Le sujet demande de reproduire le comportement de référence Inetutils 2.0, donc compare les résultats avec cette version autant que possible.
+9. Organisation du projet
+
+Enfin, prépare-toi à organiser ton code en fonctions distinctes :
+- Analyse des arguments.
+- Validation et résolution de la destination.
+- Création et configuration du socket.
+- Construction et envoi des requêtes ICMP.
+- Réception et analyse des réponses.
+- Calcul du RTT.
+- Affichage des résultats et statistiques.
+- Nettoyage des ressources.
+Maîtrise aussi le Makefile, la compilation avec -Wall -Wextra -Werror et les tests d'erreurs.
+
+10. Les bonus
+Apprends-les seulement après avoir terminé toutes les exigences obligatoires. Exemples : -n, -s, --ttl, -w et -W. Consulte le sujet pour connaître précisément leur comportement attendu.
+
+L'ordre que je te recommande
+Ta checklist d'apprentissage
+0/10
+
+[ ] 1. Bases du C et gestion des erreurs
+[ ] 2. Arguments argc / argv
+[ ] 3. IPv4, ICMP et fonctionnement de ping
+[ ] 4. Sockets et fonctions réseau
+[ ] 5. Structure des paquets ICMP et checksum
+[ ] 6. DNS et résolution des noms
+[ ] 7. Temps, signaux et statistiques
+[ ] 8. Comparaison avec Inetutils 2.0
+[ ] 9. Développement et tests de ft_ping
+[ ] 10. Bonus
+
+Mon conseil : commence par les bases des sockets, mais ne te lance pas directement dans ft_ping. Entraîne-toi d'abord à créer un socket, puis à envoyer et recevoir des données. Ensuite, passe à ICMP.

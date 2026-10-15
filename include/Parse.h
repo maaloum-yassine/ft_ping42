@@ -8,5 +8,5 @@
 
 unsigned char ft_check_arguments (int argc, char **argv);
 
-
+    
 #endif
